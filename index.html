@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Blog Editor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.snow.min.css"
+      integrity="sha512-UmV2ARg2MsY8TysMjhJvXSQHYgiYSVPS5ULXZCsTP3RgiMmBJhf8qP93vEyJgYuGt3u9V6wem73b11/Y8GVcOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Custom Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Pacifico&display=swap");
+
+      .ql-font-roboto {
+        font-family: "Roboto", sans-serif;
+      }
+      .ql-font-pacifico {
+        font-family: "Pacifico", cursive;
+      }
+
+      /* Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9fafc;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      textarea,
+      input[type="file"] {
+        width: -webkit-fill-available;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .editor-container {
+        margin-bottom: 20px;
+      }
+
+      .quotation-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .quotation-container input {
+        margin-right: 10px;
+      }
+
+      #quotation {
+        display: none;
+        margin-top: 10px;
+      }
+
+      #editor1 {
+        height: 150px;
+      }
+
+      #editor2 {
+        height: 150px;
+      }
+
+      #publishBtn, .list-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: #fff;
+        background: #0078d7;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #publishBtn:hover,.list-button:hover {
+        background: #005bb5;
+      }
+
+      .list-button{
+        margin-top: 20px;
+      }
+
+      .list-button a{
+        color: white;
+        text-decoration: none;
+      }
+      .container label {
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📝 Blog Editor</h1>
+      <!-- Blog Title -->
+      <input type="text" id="title" placeholder="Enter Blog Title" required />
+
+      <!-- Blog Cover Image Upload -->
+      <label for="coverImage">📸 Upload Cover Image</label>
+      <input type="file" id="coverImage" accept="image/*" />
+
+      <!-- First Paragraph Editor -->
+      <label>📝 Paragraph 1</label>
+      <div id="editor1" class="editor-container"></div>
+
+      <!-- Quotation Section -->
+      <div class="quotation-container">
+        <input type="checkbox" id="enableQuotation" />
+        <label for="enableQuotation">Enable Quotation</label>
+      </div>
+      <textarea id="quotation" placeholder="Enter Quotation"></textarea>
+
+      <!-- Second Paragraph Editor -->
+      <label>📝 Paragraph 2</label>
+      <div id="editor2" class="editor-container"></div>
+
+      <!-- Publish Button -->
+      <div id="response"></div>
+      <button type="submit" id="publishBtn">Publish Blog</button>
+      <button class="list-button"><a href="blog-list.html">List of blogs</a></button>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.min.js"
+      integrity="sha512-1nmY9t9/Iq3JU1fGf0OpNCn6uXMmwC1XYX9a6547vnfcjCY1KvU9TE5e8jHQvXBoEH7hcKLIbbOjneZ8HCeNLA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script defer src="script.js"></script>
+  </body>
+</html>

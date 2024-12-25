@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Blog Editor</title>
+  <style>
+    .blog-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .blog-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .blog-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    .blog-content {
+        padding: 1rem;
+    }
+    .blog-content h3 {
+        margin: 0 0 0.5rem;
+    }
+</style>
+</head>
+<body>
+    <h2>📋 Blog Listings</h2>
+    <div id="response"></div>
+    <div id="blogList" class="blog-list"></div>
+
+</body>
+<script src="./blogList.js"></script>
