@@ -82,7 +82,8 @@
         height: 150px;
       }
 
-      #publishBtn, .list-button {
+      #publishBtn,
+      .list-button {
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -93,15 +94,16 @@
         cursor: pointer;
       }
 
-      #publishBtn:hover,.list-button:hover {
+      #publishBtn:hover,
+      .list-button:hover {
         background: #005bb5;
       }
 
-      .list-button{
+      .list-button {
         margin-top: 20px;
       }
 
-      .list-button a{
+      .list-button a {
         color: white;
         text-decoration: none;
       }
@@ -139,7 +141,9 @@
       <!-- Publish Button -->
       <div id="response"></div>
       <button type="submit" id="publishBtn">Publish Blog</button>
-      <button class="list-button"><a href="blog-list.html">List of blogs</a></button>
+      <button class="list-button">
+        <a href="blog-list.html">List of blogs</a>
+      </button>
     </div>
 
     <script
@@ -148,6 +152,28 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <script>
+      function checkJWTInLocalStorage() {
+        const jwtKey = "jwt"; // Replace with the key name used to store the JWT
+        const token = localStorage.getItem(jwtKey);
+
+        if (token) {
+          console.log("JWT found:", token);
+          return true; // JWT is present
+        } else {
+          console.log("JWT not found");
+          return false; // JWT is not present
+        }
+      }
+      if (checkJWTInLocalStorage()) {
+        console.log("Proceed with authenticated actions");
+      } else {
+        console.log("Redirect to login or display a message");
+        window.location.href = 'login.html';
+      }
+    </script>
+
     <script defer src="script.js"></script>
   </body>
 </html>
