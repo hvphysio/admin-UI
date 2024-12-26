@@ -2,7 +2,7 @@ let blogs = [];
 
 const getBlogs = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/blog/posts", {
+    const response = await fetch("https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/posts", {
       method: "GET",
     });
 
@@ -44,7 +44,7 @@ function renderBlogList() {
 
 
 const deleteBlog = async (id) => {
-  const response = await fetch(`http://localhost:3000/api/blog/post/${id}`, {
+  const response = await fetch(`https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post/${id}`, {
     method: "DELETE",
   });
   if (response.success) {

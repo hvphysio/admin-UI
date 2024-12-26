@@ -65,7 +65,7 @@ document.getElementById('publishBtn').addEventListener('click', async (e) => {
   if (quotation) formData.append('quotation', quotation);
 
   try {
-    const response = await fetch('http://localhost:3000/api/blog/post', {
+    const response = await fetch('https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post', {
       method: 'POST',
       body: formData
     });
@@ -108,7 +108,7 @@ const  editBlog = async (id) => {
 
   const getBlogById = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/blog/post/${id}`, {
+      const response = await fetch(`https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post/${id}`, {
         method: "GET",
       });
   
