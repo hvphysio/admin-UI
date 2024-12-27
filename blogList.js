@@ -2,7 +2,7 @@ let blogs = [];
 
 const getBlogs = async () => {
   try {
-    const response = await fetchWithAuth("https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/posts", {
+    const response = await fetchWithAuth("https://blogbee.vercel.app/api/blog/posts", {
       method: "GET",
     });
 
@@ -28,12 +28,20 @@ function renderBlogList() {
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
   blogs.forEach((blog) => {
+
+    const maxLength = 50;
+    let  description = '';
+    if (blog.paragraph1.length > maxLength) {
+        description = blog.paragraph1.slice(0, maxLength) + "...";
+    }
+    else description = blog.paragraph1;
+
     blogList.innerHTML += `
             <div class="blog-card">
-                <img src="${blog.coverImage}" alt="Blog Cover" class="blog-image">
+                <img src="${blog.coverImage || "./assets/img/elementor-placeholder-image.webp"}" alt="Blog Cover" class="blog-image">
                 <div class="blog-content">
                     <h3>${blog.title}</h3>
-                    <p>${blog.shortDescription}...</p>
+                    <p>${description}...</p>
                     <p><strong>Tags:</strong> ${blog.tags}</p>
                     <button ><a href="index.html?id=${blog.id}">✏️ Edit</a></button>
                     <button onclick="deleteBlog(${blog.id})">🗑️ Delete</button>
@@ -44,7 +52,7 @@ function renderBlogList() {
 
 
 const deleteBlog = async (id) => {
-  const response = await fetchWithAuth(`https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post/${id}`, {
+  const response = await fetchWithAuth(`https://blogbee.vercel.app/api/blog/post/${id}`, {
     method: "DELETE",
   });
   if (response.success) {
