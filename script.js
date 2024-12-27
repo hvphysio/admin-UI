@@ -65,7 +65,10 @@ document.getElementById('publishBtn').addEventListener('click', async (e) => {
   if (quotation) formData.append('quotation', quotation);
 
   try {
-    const response = await fetch('https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post', {
+    const apiUrl  =  "https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post";
+    // const apiUrl  =  "http://localhost:3000/api/blog/post";
+
+    const response = await fetchWithAuth(apiUrl, {
       method: 'POST',
       body: formData
     });
@@ -108,7 +111,7 @@ const  editBlog = async (id) => {
 
   const getBlogById = async (id) => {
     try {
-      const response = await fetch(`https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post/${id}`, {
+      const response = await fetchWithAuth(`https://blogbee-1c4inpd76-tapas-projects-95ff1b7a.vercel.app/api/blog/post/${id}`, {
         method: "GET",
       });
   
@@ -145,3 +148,26 @@ function transformToAssocArray( prmstr ) {
 }
 
 const params = getSearchParameters();
+
+
+function fetchWithAuth(input, options = {}) {
+    // Get the token from localStorage
+    const token = localStorage.getItem('jwt');
+  
+    // Clone the headers if they exist or create a new headers object
+    const headers = new Headers(options.headers || {});
+  
+    // If the token exists, add the Authorization header
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+  
+    // Include headers in the fetch options
+    const fetchOptions = {
+      ...options,
+      headers,
+    };
+  
+    // Call the native fetch with the updated options
+    return fetch(input, fetchOptions);
+  }
